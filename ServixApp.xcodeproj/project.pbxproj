@@ -14,6 +14,8 @@
 		336A23182971AEB3008C4C9D /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A23172971AEB3008C4C9D /* RegisterView.swift */; };
 		33C848E5299E97D400CB1EB0 /* ForgottenPassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C848E4299E97D400CB1EB0 /* ForgottenPassView.swift */; };
 		33C848E7299EBAD500CB1EB0 /* TextFieldCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C848E6299EBAD500CB1EB0 /* TextFieldCustom.swift */; };
+		FCDFEDE429AE8EFB00B77E93 /* NewEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDFEDE329AE8EFB00B77E93 /* NewEventView.swift */; };
+		FCDFEDE629AE8F2300B77E93 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDFEDE529AE8F2300B77E93 /* NetworkHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		336A23172971AEB3008C4C9D /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		33C848E4299E97D400CB1EB0 /* ForgottenPassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgottenPassView.swift; sourceTree = "<group>"; };
 		33C848E6299EBAD500CB1EB0 /* TextFieldCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCustom.swift; sourceTree = "<group>"; };
+		FCDFEDE329AE8EFB00B77E93 /* NewEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventView.swift; sourceTree = "<group>"; };
+		FCDFEDE529AE8F2300B77E93 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +61,11 @@
 		336A23082971A624008C4C9D /* ServixApp */ = {
 			isa = PBXGroup;
 			children = (
-				336A23172971AEB3008C4C9D /* RegisterView.swift */,
 				336A23092971A624008C4C9D /* ServixApp.swift */,
+				336A23172971AEB3008C4C9D /* RegisterView.swift */,
 				336A230B2971A624008C4C9D /* LoginView.swift */,
+				FCDFEDE329AE8EFB00B77E93 /* NewEventView.swift */,
+				FCDFEDE529AE8F2300B77E93 /* NetworkHelper.swift */,
 				336A230D2971A626008C4C9D /* Assets.xcassets */,
 				336A230F2971A626008C4C9D /* Preview Content */,
 				33C848E4299E97D400CB1EB0 /* ForgottenPassView.swift */,
@@ -146,10 +152,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCDFEDE629AE8F2300B77E93 /* NetworkHelper.swift in Sources */,
 				33C848E5299E97D400CB1EB0 /* ForgottenPassView.swift in Sources */,
 				336A23182971AEB3008C4C9D /* RegisterView.swift in Sources */,
 				33C848E7299EBAD500CB1EB0 /* TextFieldCustom.swift in Sources */,
 				336A230C2971A624008C4C9D /* LoginView.swift in Sources */,
+				FCDFEDE429AE8EFB00B77E93 /* NewEventView.swift in Sources */,
 				336A230A2971A624008C4C9D /* ServixApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -39,6 +39,13 @@ struct TextFieldCustomView: View {
 
 // Modifier
 
+struct BackgroundColorView: View {
+    var body: some View {
+        Color.cyan.ignoresSafeArea()
+    }
+}
+
+
 struct TextFieldModifier: ViewModifier {
     var placeholder: String
     var image: String
