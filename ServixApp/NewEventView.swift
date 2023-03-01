@@ -8,66 +8,97 @@
 import SwiftUI
 
 struct NewEventView: View {
-    @Binding var shouldShowNewEvent: Bool
+    @Binding var showTicket: Bool
     @State var date: Date = Date()
     @State var name: String = ""
     
     var completion: () -> () = {}
     
-//    var colors = ["Red", "Green", "Blue", "Tartan"]
-//    @State private var selectedColor = "Red"
+    var services = ["Service","Corte de caballero", "Green", "Blue", "Tartan"]
+    @State private var selectedService = "Service"
     
     var body: some View {
-        ZStack{
-            BackgroundColorView()
-            VStack{
-                Text("Nuevo Evento")
-                    .foregroundColor(.white)
-                    .font(.system(size: 30, weight: .bold))
-                    .padding(.top, 20)
-                
-                
-//                HStack {
-//                    Spacer()
-//                    Picker("Please choose a color", selection: $selectedColor) {
-//                        ForEach(colors, id: \.self) {
-//                            Text($0)
-//
-//                        }
-//                    }
-//                    .tint(.black)
-//                }
-                
-                DatePicker("", selection: $date, displayedComponents: .date)
-                    .datePickerStyle(.wheel)
-                    .background(Color.white)
-                    .cornerRadius(5)
-                    .padding(.horizontal, 10)
-                    .padding(.top, 10)
-                
-                TextField(" Introduce el nombre del evento", text: $name)
-                    .frame(height: 60)
-                    .frame(width: 370)
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .padding(.top, 15)
-                
-                Spacer()
-                
-                Button{
-                    createEvent()
-                    shouldShowNewEvent = false
-                }label: {
-                    Text("Confirmar")
-                        .frame(height: 50)
-                        .frame(width: 140)
-                        .background(Color.white)
-                        .font(.system(size: 30))
-                        .cornerRadius(10)
-                        .padding(.top, 15)
+        VStack{
+            
+            headerView
+            
+            
+            fieldsView
+            
+            Spacer()
+            
+            buttonView
+            
+        }
+        
+    }
+    var headerView: some View {
+        VStack(spacing: 15) {
+            Image("Logo")
+                .resizable()
+                .frame(width: 130, height: 130)
+                .padding(.top, 30)
+        }
+    }
+    
+    var fieldsView: some View{
+        VStack{
+            
+            Text("Elige un servicio")
+                .foregroundColor(Color("OurBlue"))
+                .bold()
+                        
+            Picker("Please choose a color", selection: $selectedService) {
+                ForEach(services, id: \.self) {
+                    Text($0)
                 }
             }
+            .pickerStyle(.automatic)
+            .tint(.black)
+            .frame(width: 300, height: 40, alignment: .center)
+            .background(Color("OurBlue").opacity(0.22))
+                        
+            Text("Elige una fecha")
+                .foregroundColor(Color("OurBlue"))
+                .bold()
+                .frame(alignment: .leading)
+            
+            DatePicker("", selection: $date, displayedComponents: .date)
+                .frame(height:100)
+                .datePickerStyle(.wheel)
+                .background(Color("OurBlue").opacity(0.22))
+                .cornerRadius(5)
+                .padding(.horizontal, 10)
+                .padding(.top, 20)
+                .overlay(
+                    Image(systemName: "calendar")
+                        .resizable()
+                        .frame(width: 48, height: 48, alignment: .leading)
+                        .foregroundColor(Color("OurBlue").opacity(0.7))
+                        .padding(.leading, 15)
+                        .offset(x:10, y: 10)
+                    , alignment: .leading)
         }
+        .padding(.top, 100)
+    }
+    
+    var buttonView: some View{
+        Button {
+            // TODO: - Login Action
+        } label: {
+            Text("Continuar")
+                .foregroundColor(.white)
+                .font(.system(size: 27))
+                .frame(width: 180, height: 60)
+            //.frame(maxWidth: .infinity)
+                .background(Color("OurBlue"))
+                .cornerRadius(15)
+            
+        }.background(
+            NavigationLink(destination: LoginView(), isActive: $showTicket) {
+                EmptyView()
+            })
+        .padding(.bottom, 50)
     }
     private func eventRegister(name: String, date: Int) {
         
@@ -101,7 +132,7 @@ struct NewEventView: View {
     
     func onSuccess(){
         completion()
-        shouldShowNewEvent = false
+        showTicket = false
     }
     
     func convertDateToInt(date: Date) -> Int{
@@ -115,6 +146,6 @@ struct NewEventView: View {
 
 struct NewEventView_Previews: PreviewProvider {
     static var previews: some View {
-        NewEventView(shouldShowNewEvent: .constant(true))
+        NewEventView(showTicket: .constant(true))
     }
 }

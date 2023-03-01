@@ -41,7 +41,7 @@ struct TextFieldCustomView: View {
 
 struct BackgroundColorView: View {
     var body: some View {
-        Color.cyan.ignoresSafeArea()
+        Color.white.ignoresSafeArea()
     }
 }
 

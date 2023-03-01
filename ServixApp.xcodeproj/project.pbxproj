@@ -12,6 +12,7 @@
 		336A230E2971A626008C4C9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 336A230D2971A626008C4C9D /* Assets.xcassets */; };
 		336A23112971A626008C4C9D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 336A23102971A626008C4C9D /* Preview Assets.xcassets */; };
 		336A23182971AEB3008C4C9D /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A23172971AEB3008C4C9D /* RegisterView.swift */; };
+		33ABADCC29AFA74800261ECF /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ABADCB29AFA74800261ECF /* TicketView.swift */; };
 		33C848E5299E97D400CB1EB0 /* ForgottenPassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C848E4299E97D400CB1EB0 /* ForgottenPassView.swift */; };
 		33C848E7299EBAD500CB1EB0 /* TextFieldCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C848E6299EBAD500CB1EB0 /* TextFieldCustom.swift */; };
 		FCDFEDE429AE8EFB00B77E93 /* NewEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDFEDE329AE8EFB00B77E93 /* NewEventView.swift */; };
@@ -25,6 +26,7 @@
 		336A230D2971A626008C4C9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		336A23102971A626008C4C9D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		336A23172971AEB3008C4C9D /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		33ABADCB29AFA74800261ECF /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
 		33C848E4299E97D400CB1EB0 /* ForgottenPassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgottenPassView.swift; sourceTree = "<group>"; };
 		33C848E6299EBAD500CB1EB0 /* TextFieldCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCustom.swift; sourceTree = "<group>"; };
 		FCDFEDE329AE8EFB00B77E93 /* NewEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventView.swift; sourceTree = "<group>"; };
@@ -66,9 +68,10 @@
 				336A230B2971A624008C4C9D /* LoginView.swift */,
 				FCDFEDE329AE8EFB00B77E93 /* NewEventView.swift */,
 				FCDFEDE529AE8F2300B77E93 /* NetworkHelper.swift */,
+				33C848E4299E97D400CB1EB0 /* ForgottenPassView.swift */,
+				33ABADCB29AFA74800261ECF /* TicketView.swift */,
 				336A230D2971A626008C4C9D /* Assets.xcassets */,
 				336A230F2971A626008C4C9D /* Preview Content */,
-				33C848E4299E97D400CB1EB0 /* ForgottenPassView.swift */,
 				33C848E6299EBAD500CB1EB0 /* TextFieldCustom.swift */,
 			);
 			path = ServixApp;
@@ -154,6 +157,7 @@
 			files = (
 				FCDFEDE629AE8F2300B77E93 /* NetworkHelper.swift in Sources */,
 				33C848E5299E97D400CB1EB0 /* ForgottenPassView.swift in Sources */,
+				33ABADCC29AFA74800261ECF /* TicketView.swift in Sources */,
 				336A23182971AEB3008C4C9D /* RegisterView.swift in Sources */,
 				33C848E7299EBAD500CB1EB0 /* TextFieldCustom.swift in Sources */,
 				336A230C2971A624008C4C9D /* LoginView.swift in Sources */,
