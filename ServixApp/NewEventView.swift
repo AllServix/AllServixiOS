@@ -47,7 +47,7 @@ struct NewEventView: View {
             Text("Elige un servicio")
                 .foregroundColor(Color("OurBlue"))
                 .bold()
-                        
+            
             Picker("Please choose a color", selection: $selectedService) {
                 ForEach(services, id: \.self) {
                     Text($0)
@@ -57,7 +57,7 @@ struct NewEventView: View {
             .tint(.black)
             .frame(width: 300, height: 40, alignment: .center)
             .background(Color("OurBlue").opacity(0.22))
-                        
+            
             Text("Elige una fecha")
                 .foregroundColor(Color("OurBlue"))
                 .bold()
@@ -78,6 +78,10 @@ struct NewEventView: View {
                         .padding(.leading, 15)
                         .offset(x:10, y: 10)
                     , alignment: .leading)
+                .overlay(Rectangle()
+                    .fill(Color("OurBlue"))
+                    .frame(width: 390, height: 5)
+                    .padding(.top, 20), alignment: .bottom)
         }
         .padding(.top, 100)
     }

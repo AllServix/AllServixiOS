@@ -28,22 +28,18 @@ struct RegisterView: View {
     @FocusState private var isUsernameFocused: Bool
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 0) {
-                
-                //Logo y texto
-                headerView
-                
-                // Textfields
-                textFieldsView
-                
-                //Botón
-                buttonView
-            }
+        VStack(spacing: 0) {
             
+            //Logo y texto
+            headerView
+            
+            // Textfields
+            textFieldsView
+            
+            //Botón
+            buttonView
         }
         .background(Color.white)
-        
     }
     
     // MARK: - Accessory Views
