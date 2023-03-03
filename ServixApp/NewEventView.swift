@@ -68,7 +68,6 @@ struct NewEventView: View {
                 .datePickerStyle(.wheel)
                 .background(Color("OurBlue").opacity(0.22))
                 .cornerRadius(5)
-                .padding(.horizontal, 10)
                 .padding(.top, 20)
                 .overlay(
                     Image(systemName: "calendar")
@@ -76,11 +75,11 @@ struct NewEventView: View {
                         .frame(width: 48, height: 48, alignment: .leading)
                         .foregroundColor(Color("OurBlue").opacity(0.7))
                         .padding(.leading, 15)
-                        .offset(x:10, y: 10)
+                        .offset(y: 10)
                     , alignment: .leading)
                 .overlay(Rectangle()
                     .fill(Color("OurBlue"))
-                    .frame(width: 390, height: 5)
+                    .frame(width: .infinity, height: 5)
                     .padding(.top, 20), alignment: .bottom)
         }
         .padding(.top, 100)

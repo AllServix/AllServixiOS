@@ -20,7 +20,7 @@ struct ForgottenPassView: View {
             
             textFieldsView
             
-            Text("You will receive an email with your new password")
+            Text("Recibirás tu nueva contraseña en tu cuenta de correo.")
                 .foregroundColor(Color("OurBlue"))
                 .frame(width: 270)
                 .multilineTextAlignment(.center)
@@ -44,6 +44,7 @@ struct ForgottenPassView: View {
             Image("Logo")
                 .resizable()
                 .frame(width: 130, height: 130)
+                .padding(.top, 70)
             
             Text("Log-In")
                 .foregroundColor(Color("OurBlue"))

@@ -80,7 +80,7 @@ struct RegisterView: View {
         Button {
             // TODO: - Login Action
         } label: {
-            Text("Register")
+            Text("Registrarme")
                 .foregroundColor(.white)
                 .font(.system(size: 27))
                 .frame(width: 180, height: 60)
