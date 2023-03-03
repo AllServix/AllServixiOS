@@ -15,7 +15,7 @@ struct LoginView: View {
     @State var showRegister: Bool = false
     @State var showHome:Bool = false
     
-    @State var nameFocused = false
+    @State var emailFocused = false
     @State var passwordFocused = false
     
     @FocusState private var isUsernameFocused: Bool
@@ -23,156 +23,16 @@ struct LoginView: View {
     var body: some View {
         NavigationView{
             VStack {
-                Image("Logo")
-                    .resizable()
-                    .frame(width: 130, height: 130)
-                    .padding(.top, 70)
                 
-                Text("Log-In")
-                    .foregroundColor(Color("OurBlue"))
-                    .font(.system(size: 30, weight: .bold))
-                    .padding(.top, 15)
-                    .padding(.bottom, 70)
+                headerView
                 
-                VStack(alignment: .leading, spacing: 4, content: {
-                    HStack(spacing: 15){
-                        
-                        Image(systemName: "envelope")
-                            .foregroundColor(nameFocused ? Color("OurBlue"): Color("OurBlue").opacity(0.7))
-                            .offset(y: nameFocused ? 0 : 6)
-                            .scaleEffect(nameFocused ? 1.5 : 1.2)
-                        
-                        TextField("", text: $email
-                                  , onEditingChanged: { edited in
-                            if edited {
-                                withAnimation(.easeIn){
-                                    nameFocused = true
-                                }
-                            } else {
-                                if email == "" {
-                                    withAnimation(.easeOut){
-                                        nameFocused = false
-                                    }
-                                }
-                            }
-                            
-                        })
-                        .disableAutocorrection(true)
-                    }
-                    .padding(.top, nameFocused ? 15 : 0)
-                    .background(
-                        
-                        Text("Email")
-                            .padding(.leading, 30)
-                            .scaleEffect(nameFocused ? 0.8 : 1)
-                            .offset(x: nameFocused ? -1 : 0, y: nameFocused ? -18 : 8 )
-                            .foregroundColor(nameFocused ? Color("OurBlue"): Color("OurBlue").opacity(0.7))
-                        ,alignment: .leading
-                        
-                    ).padding(.horizontal)
-                    
-                    
-                    Rectangle()
-                        .fill(nameFocused ? Color("OurBlue") : Color("OurBlue").opacity(0.7))
-                        .opacity(nameFocused ? 1 : 0.7)
-                        .frame(height : 5)
-                        .padding(.top, 20)
-                })
-                .padding(.top, 12)
-                .background(Color("OurBlue").opacity(0.22))
-                .cornerRadius(5)
-                .padding(.bottom, 40)
+                textFieldsView
                 
-                VStack(alignment: .leading, spacing: 4, content: {
-                    HStack(spacing: 15){
-                        
-                        Image("PassIcon70")
-                            .foregroundColor(passwordFocused ? Color("OurBlue"): Color("OurBlue").opacity(0.7))
-                            .offset(y: passwordFocused ? -1 : 0)
-                        
-                        TextField("", text: $password, onEditingChanged: { edited in
-                            if edited {
-                                withAnimation(.easeIn){
-                                    passwordFocused = true
-                                }
-                            } else {
-                                if password == "" {
-                                    withAnimation(.easeOut){
-                                        passwordFocused = false
-                                    }
-                                }
-                            }
-                        })
-                        .disableAutocorrection(true)
-                    }
-                    .padding(.top, passwordFocused ? 15 : 0)
-                    .background(
-                        
-                        Text("Password")
-                            .padding(.leading, 30)
-                            .scaleEffect(passwordFocused ? 0.8 : 1)
-                            .offset(x: passwordFocused ? -1 : 0, y: passwordFocused ? -18 : 0 )
-                            .foregroundColor(passwordFocused ? Color("OurBlue"): Color("OurBlue").opacity(0.7))
-                        ,alignment: .leading
-                    ).padding(.horizontal)
-                    
-                    Rectangle()
-                        .fill(passwordFocused ? Color("OurBlue") : Color("OurBlue").opacity(0.7))
-                        .opacity(passwordFocused ? 1 : 0.7)
-                        .frame(height : 5)
-                        .padding(.top, 10)
-                })
-                .padding(.top, 12)
-                .background(Color("OurBlue").opacity(0.22))
-                .cornerRadius(5)
+                forgottenView
                 
-                NavigationLink{
-                    ForgottenPassView()
-                }label: {
-                    Text("Have you forgot your password?")
-                        .foregroundColor(Color("OurPurple").opacity(0.7))
-                        .font(.system(size: 12, weight: .bold))
-                        .padding(.bottom, 20)
-                        .padding(.top, 10)
-                        .padding(.leading, 180)
-                }
+                buttonView
                 
-                Spacer()
-                
-                Button {
-                    // TODO: - Login Action
-                } label: {
-                    Text("Log-In")
-                        .foregroundColor(.white)
-                        .font(.system(size: 27))
-                        .frame(height: 60)
-                        .frame(maxWidth: .infinity)
-                        .background(Color("OurBlue"))
-                        .cornerRadius(15)
-                        .padding(.bottom, 80)
-                        .padding(.horizontal, 100)
-                    
-                }.background(
-                    NavigationLink(destination: RegisterView(), isActive: $showHome) {
-                        EmptyView()
-                    })
-                
-                HStack{
-                    
-                    Text("You don´t have an account?")
-                        .foregroundColor(Color("OurBlue").opacity(0.7))
-                        .font(.system(size: 15, weight: .bold))
-                        .padding(.bottom, 20)
-                    
-                    NavigationLink{
-                        RegisterView()
-                    }label: {
-                        Text("Sign Up")
-                            .foregroundColor(Color("OurPurple").opacity(0.7))
-                            .font(.system(size: 15, weight: .bold))
-                            .padding(.bottom, 20)
-                    }
-                }
+                withoutAcc
                 
             }
             .padding()
@@ -180,6 +40,82 @@ struct LoginView: View {
             .ignoresSafeArea()
         }
     }
+    
+    var headerView: some View {
+        VStack(spacing: 15) {
+            Image("Logo")
+                .resizable()
+                .frame(width: 130, height: 130)
+            
+            Text("Log-In")
+                .foregroundColor(Color("OurBlue"))
+                .font(.system(size: 30, weight: .bold))
+                .padding(.bottom, 30)
+            
+        }
+    }
+    
+    var textFieldsView: some View {
+        VStack(spacing: 12) {
+            TextFieldCustomView(placeholder: "Email", image: "envelope", imageSize: CGSize(width: 23, height: 17), text: $email, isFocused: $emailFocused)
+            
+            TextFieldCustomView(placeholder: "Password", image: "lock.fill", imageSize: CGSize(width: 17, height: 23), text: $password, isFocused: $passwordFocused)
+        }
+        .padding(.horizontal)
+        .padding(.top, 30)
+    }
+    
+    var forgottenView: some View{
+        NavigationLink{
+            ForgottenPassView()
+        }label: {
+            Text("Have you forgot your password?")
+                .foregroundColor(Color("OurPurple").opacity(0.7))
+                .font(.system(size: 12, weight: .bold))
+                .padding(.bottom, 20)
+                .padding(.top, 10)
+                .padding(.leading, 180)
+        }
+    }
+    
+    var buttonView: some View{
+        Button {
+            // TODO: - Login Action
+        } label: {
+            Text("Log-In")
+                .foregroundColor(.white)
+                .font(.system(size: 27))
+                .frame(height: 60)
+                .frame(maxWidth: .infinity)
+                .background(Color("OurBlue"))
+                .cornerRadius(15)
+                .padding(.bottom, 50)
+                .padding(.horizontal, 100)
+            
+        }.background(
+            NavigationLink(destination: RegisterView(), isActive: $showHome) {
+                EmptyView()
+            })
+    }
+    
+    var withoutAcc: some View{
+        HStack{
+            Text("You don´t have an account?")
+                .foregroundColor(Color("OurBlue").opacity(0.7))
+                .font(.system(size: 15, weight: .bold))
+                .padding(.bottom, 30)
+            
+            NavigationLink{
+                RegisterView()
+            }label: {
+                Text("Sign Up")
+                    .foregroundColor(Color("OurPurple").opacity(0.7))
+                    .font(.system(size: 15, weight: .bold))
+                    .padding(.bottom, 30)
+            }
+        }
+    }
+    
     func login(email: String, password: String){
         
         let dictionary: [String: Any] = [

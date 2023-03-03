@@ -13,6 +13,20 @@ struct RootView: View {
     
     var body: some View {
         
+        TabView(selection: $selectedTab) {
+            HomeView()
+                .tag(Tabs.home)
+            
+            NewEventView(showTicket: .constant(true))
+                .tag(Tabs.add)
+            
+            ListView()
+                .tag(Tabs.list)
+            
+            ProfileView()
+                .tag(Tabs.profile)
+        }
+        
         
         Spacer()
         
