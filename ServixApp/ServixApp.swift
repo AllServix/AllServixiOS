@@ -11,7 +11,7 @@ import SwiftUI
 struct ServixApp: App {
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            RootView()
         }
     }
 }
