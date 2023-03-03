@@ -9,8 +9,7 @@ import SwiftUI
 
 struct RegisterView: View {
     
-    @State var name: String = ""
-    @State var surname: String = ""
+    @State var username: String = ""
     @State var password: String = ""
     @State var repeatP: String = ""
     @State var email: String = ""
@@ -18,8 +17,7 @@ struct RegisterView: View {
     
     @State var showLogin:Bool = false
     
-    @State var nameFocused = false
-    @State var surnameFocused = false
+    @State var usernameFocused = false
     @State var passwordFocused = false
     @State var repeatFocused = false
     @State var emailFocused = false
@@ -62,9 +60,8 @@ struct RegisterView: View {
     var textFieldsView: some View {
         VStack(spacing: 12) {
             
-            TextFieldCustomView(placeholder: "Name", image: "envelope", imageSize: CGSize(width: 23, height: 17), text: $name, isFocused: $nameFocused)
+            TextFieldCustomView(placeholder: "Username", image: "person.fill", imageSize: CGSize(width: 17, height: 20), text: $username, isFocused: $usernameFocused)
             
-            TextFieldCustomView(placeholder: "Surname", image: "envelope", imageSize: CGSize(width: 23, height: 17), text: $surname, isFocused: $surnameFocused)
             
             TextFieldCustomView(placeholder: "Email", image: "envelope", imageSize: CGSize(width: 23, height: 17), text: $email, isFocused: $emailFocused)
             

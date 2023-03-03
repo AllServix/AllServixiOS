@@ -7,9 +7,35 @@
 
 import SwiftUI
 
+
+
 struct ProfileView: View {
+    
+    @State var email: String = ""
+    @State var nameFocused = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            
+            headerView
+            
+            
+        }
+    }
+    
+    var headerView: some View {
+        VStack(spacing: 15) {
+            Image("Logo")
+                .resizable()
+                .frame(width: 130, height: 130)
+                .padding(.top, 30)
+            
+            Text("Sign-Up")
+                .foregroundColor(Color("OurBlue"))
+                .font(.system(size: 30, weight: .bold))
+                .padding(.bottom, 30)
+            
+        }
     }
 }
 
