@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @State var name: String = ""
+    @State var email: String = ""
     @State var password: String = ""
     
     @State var showRegister: Bool = false
@@ -42,13 +42,14 @@ struct LoginView: View {
                             .offset(y: nameFocused ? 0 : 6)
                             .scaleEffect(nameFocused ? 1.5 : 1.2)
                         
-                        TextField("", text: $name, onEditingChanged: { edited in
+                        TextField("", text: $email
+                                  , onEditingChanged: { edited in
                             if edited {
                                 withAnimation(.easeIn){
                                     nameFocused = true
                                 }
                             } else {
-                                if name == "" {
+                                if email == "" {
                                     withAnimation(.easeOut){
                                         nameFocused = false
                                     }
@@ -179,7 +180,36 @@ struct LoginView: View {
             .ignoresSafeArea()
         }
     }
+    func login(email: String, password: String){
+        
+        let dictionary: [String: Any] = [
+            "email" : email,
+            "password" : password
+        ]
+        NetworkHelper.shared.requestProvider(url: "https://superapi.netlify.app/api/login", params: dictionary) { data, response, error in
+            if let error = error {
+                print(error.localizedDescription)
+                
+            }else if let data = data, let response = response as? HTTPURLResponse{
+                print(response.statusCode)
+                print(String(bytes:data, encoding: .utf8))
+                if response.statusCode == 200{
+                    onSuccess()
+                }else{
+                    onError(error: error?.localizedDescription ?? "Request error")
+                    
+                }
+            }
+        }
+    }
     
+    func onSuccess(){
+        showHome = true
+    }
+    
+    func onError(error: String){
+        
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {

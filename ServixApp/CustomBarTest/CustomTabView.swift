@@ -30,8 +30,10 @@ struct CustomTabView: View {
                     if selectedTab == .home {
                         Rectangle()
                             .foregroundColor(.white)
-                            .frame(width: geo.size.width/2, height: 4)
-                            .padding(.leading, geo.size.width/4)
+                            .frame(width: geo.size.width/4, height: 4)
+                            .padding(.leading, geo.size.width/2.7)
+                            .padding(.vertical, 10)
+                                            
                     }
                     
                     VStack(alignment: .center, spacing: 4){
@@ -54,8 +56,9 @@ struct CustomTabView: View {
                     if selectedTab == .add {
                     Rectangle()
                         .foregroundColor(.white)
-                        .frame(width: geo.size.width/2, height: 4)
-                        .padding(.leading, geo.size.width/4)
+                        .frame(width: geo.size.width/4, height: 4)
+                        .padding(.leading, geo.size.width/2.7)
+                        .padding(.vertical, 10)
 
                 }
                     VStack(alignment: .center, spacing: 4){
@@ -77,8 +80,9 @@ struct CustomTabView: View {
                     if selectedTab == .list {
                         Rectangle()
                             .foregroundColor(.white)
-                            .frame(width: geo.size.width/2, height: 4)
-                            .padding(.leading, geo.size.width/4)
+                            .frame(width: geo.size.width/4, height: 4)
+                            .padding(.leading, geo.size.width/2.7)
+                            .padding(.vertical, 10)
                     }
                     VStack(alignment: .center, spacing: 4){
                         Image(systemName: "book")
@@ -99,8 +103,9 @@ struct CustomTabView: View {
                 if selectedTab == .profile {
                     Rectangle()
                         .foregroundColor(.white)
-                        .frame(width: geo.size.width/2, height: 4)
-                        .padding(.leading, geo.size.width/4)
+                        .frame(width: geo.size.width/4, height: 4)
+                        .padding(.leading, geo.size.width/2.7)
+                        .padding(.vertical, 10)
                 }
                 VStack(alignment: .center, spacing: 4){
                     Image(systemName: "person.fill")
