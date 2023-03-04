@@ -10,11 +10,14 @@ import SwiftUI
 struct ForgottenPassView: View {
     
     @State var email: String = ""
-    
     @State var emailFocused = false
+    @State var showLogin:Bool = false
     
     var body: some View {
         VStack {
+            
+            ButtonBack(showLogin: $showLogin)
+                .padding(.top, 60)
             
             headerView
             

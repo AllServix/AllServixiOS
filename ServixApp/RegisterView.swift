@@ -28,6 +28,8 @@ struct RegisterView: View {
     var body: some View {
         VStack(spacing: 0) {
             
+            ButtonBack(showLogin: $showLogin)
+            
             //Logo y texto
             headerView
             
@@ -43,17 +45,19 @@ struct RegisterView: View {
     // MARK: - Accessory Views
     
     var headerView: some View {
-        VStack(spacing: 15) {
-            Image("Logo")
-                .resizable()
-                .frame(width: 130, height: 130)
-                .padding(.top, 30)
+        HStack{
             
-            Text("Sign-Up")
-                .foregroundColor(Color("OurBlue"))
-                .font(.system(size: 30, weight: .bold))
-                .padding(.bottom, 30)
-            
+            VStack(spacing: 15) {
+                Image("Logo")
+                    .resizable()
+                    .frame(width: 130, height: 130)
+                
+                Text("Sign-Up")
+                    .foregroundColor(Color("OurBlue"))
+                    .font(.system(size: 30, weight: .bold))
+                    .padding(.bottom, 30)
+                
+            }
         }
     }
     
@@ -93,6 +97,39 @@ struct RegisterView: View {
                 EmptyView()
             })
         .padding(.top, 50)
+    }
+    func login(username: String, email: String, password: String, repeatPass: String, phoneNumber: String){
+        
+        let dictionary: [String: Any] = [
+            "username": username,
+            "email" : email,
+            "password" : password,
+            "repeatPass": repeatPass,
+            "phoneNumber": phoneNumber
+        ]
+        NetworkHelper.shared.requestProvider(url: "https://superapi.netlify.app/api/login", params: dictionary) { data, response, error in
+            if let error = error {
+                print(error.localizedDescription)
+                
+            }else if let data = data, let response = response as? HTTPURLResponse{
+                print(response.statusCode)
+                print(String(bytes:data, encoding: .utf8))
+                if response.statusCode == 200{
+                    onSuccess()
+                }else{
+                    onError(error: error?.localizedDescription ?? "Request error")
+                    
+                }
+            }
+        }
+    }
+    
+    func onSuccess(){
+        showLogin = true
+    }
+    
+    func onError(error: String){
+        
     }
 }
 

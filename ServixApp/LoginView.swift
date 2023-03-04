@@ -93,7 +93,7 @@ struct LoginView: View {
                 .padding(.horizontal, 100)
             
         }.background(
-            NavigationLink(destination: RegisterView(), isActive: $showHome) {
+            NavigationLink(destination: HomeView(), isActive: $showHome) {
                 EmptyView()
             })
     }

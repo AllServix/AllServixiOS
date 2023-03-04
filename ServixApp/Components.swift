@@ -82,3 +82,26 @@ struct TextFieldModifier: ViewModifier {
     }
 }
 
+struct ButtonBack: View{
+    
+    @Binding var showLogin: Bool
+    
+    var body: some View{
+        HStack{
+            Button {
+                //To do action
+                showLogin = true
+            } label: {
+                Image(systemName: "arrow.left.circle")
+                    .resizable()
+                    .frame(width: 24, height: 24)
+                    .foregroundColor(Color("OurBlue"))
+            }.background(
+                NavigationLink(destination: LoginView(), isActive: $showLogin) {
+                    EmptyView()
+                })
+            Spacer()
+        }
+        .padding(.leading, 20)
+    }
+}
