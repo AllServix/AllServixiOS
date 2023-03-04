@@ -27,7 +27,6 @@ struct RootView: View {
                 .tag(Tabs.profile)
         }
         
-        
         Spacer()
         
         CustomTabView(selectedTab: $selectedTab)

@@ -29,7 +29,6 @@ struct TextFieldCustomView: View {
                     }
                 }
             }
-            
         })
         .disableAutocorrection(true)
         .modifier(TextFieldModifier(placeholder: placeholder, image: image, imageSize: imageSize, isFocused: $isFocused))

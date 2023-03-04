@@ -28,7 +28,7 @@ struct ForgottenPassView: View {
                 .frame(width: 270)
                 .multilineTextAlignment(.center)
             
-            Spacer()
+            Spacer() 
             
         }
         .padding()
