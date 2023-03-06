@@ -19,7 +19,7 @@ struct ForgottenPassView: View {
             ButtonBack(showLogin: $showLogin)
                 .padding(.top, 60)
             
-            headerView
+            MyHeader(text: "Recuperar contraseña")
             
             textFieldsView
             
@@ -28,7 +28,7 @@ struct ForgottenPassView: View {
                 .frame(width: 270)
                 .multilineTextAlignment(.center)
             
-            Spacer() 
+            Spacer()
             
         }
         .padding()

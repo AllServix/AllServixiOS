@@ -31,7 +31,7 @@ struct RegisterView: View {
             ButtonBack(showLogin: $showLogin)
             
             //Logo y texto
-            headerView
+            MyHeader(text: "Registro")
             
             // Textfields
             textFieldsView
@@ -43,24 +43,7 @@ struct RegisterView: View {
     }
     
     // MARK: - Accessory Views
-    
-    var headerView: some View {
-        HStack{
-            
-            VStack(spacing: 15) {
-                Image("Logo")
-                    .resizable()
-                    .frame(width: 130, height: 130)
-                
-                Text("Sign-Up")
-                    .foregroundColor(Color("OurBlue"))
-                    .font(.system(size: 30, weight: .bold))
-                    .padding(.bottom, 30)
-                
-            }
-        }
-    }
-    
+        
     var textFieldsView: some View {
         VStack(spacing: 12) {
             

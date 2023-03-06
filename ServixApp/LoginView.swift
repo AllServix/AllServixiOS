@@ -24,7 +24,7 @@ struct LoginView: View {
         NavigationView{
             VStack {
                 
-                headerView
+                MyHeader(text: "Inicio sesión")
                 
                 textFieldsView
                 
@@ -38,20 +38,6 @@ struct LoginView: View {
             .padding()
             .background(Color.white)
             .ignoresSafeArea()
-        }
-    }
-    
-    var headerView: some View {
-        VStack(spacing: 15) {
-            Image("Logo")
-                .resizable()
-                .frame(width: 130, height: 130)
-            
-            Text("Log-In")
-                .foregroundColor(Color("OurBlue"))
-                .font(.system(size: 30, weight: .bold))
-                .padding(.bottom, 30)
-            
         }
     }
     
