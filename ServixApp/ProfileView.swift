@@ -17,26 +17,15 @@ struct ProfileView: View {
     var body: some View {
         VStack{
             
-            headerView
+            MyHeader(text: "Perfil")
+            
             
             
         }
     }
     
-    var headerView: some View {
-        VStack(spacing: 15) {
-            Image("Logo")
-                .resizable()
-                .frame(width: 130, height: 130)
-                .padding(.top, 30)
-            
-            Text("Sign-Up")
-                .foregroundColor(Color("OurBlue"))
-                .font(.system(size: 30, weight: .bold))
-                .padding(.bottom, 30)
-            
-        }
-    }
+    
+    
 }
 
 struct ProfileView_Previews: PreviewProvider {

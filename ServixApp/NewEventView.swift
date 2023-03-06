@@ -20,8 +20,7 @@ struct NewEventView: View {
     var body: some View {
         VStack{
             
-            headerView
-            
+            MyHeader(text: "Nueva cita")
             
             fieldsView
             
@@ -31,14 +30,6 @@ struct NewEventView: View {
             
         }
         
-    }
-    var headerView: some View {
-        VStack(spacing: 15) {
-            Image("Logo")
-                .resizable()
-                .frame(width: 130, height: 130)
-                .padding(.top, 30)
-        }
     }
     
     var fieldsView: some View{

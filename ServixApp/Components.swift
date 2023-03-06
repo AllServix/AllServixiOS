@@ -104,3 +104,23 @@ struct ButtonBack: View{
         .padding(.leading, 20)
     }
 }
+
+struct MyHeader: View{
+    
+    var text: String
+    
+    var body: some View{
+        VStack(spacing: 15) {
+            Image("Logo")
+                .resizable()
+                .frame(width: 130, height: 130)
+                .padding(.top, 30)
+            
+            Text(text)
+                .foregroundColor(Color("OurBlue"))
+                .font(.system(size: 30, weight: .bold))
+                .padding(.bottom, 30)
+            
+        }
+    }
+}

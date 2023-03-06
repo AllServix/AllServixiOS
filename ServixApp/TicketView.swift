@@ -8,8 +8,16 @@
 import SwiftUI
 
 struct TicketView: View {
+    
+    @State var showNewEvent:Bool = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        VStack(spacing: 0, content: {
+            ButtonBack(showLogin: $showNewEvent)
+            
+            MyHeader(text: "Ticket")
+        })
     }
 }
 

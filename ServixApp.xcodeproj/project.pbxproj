@@ -73,6 +73,7 @@
 		336A23082971A624008C4C9D /* ServixApp */ = {
 			isa = PBXGroup;
 			children = (
+				B0CE70CE29B5FBC50098F6A5 /* New Group */,
 				B0CE70CD29B2D4B30098F6A5 /* Views */,
 				7F98651529B1132700F21121 /* CustomBarTest */,
 				336A23092971A624008C4C9D /* ServixApp.swift */,
@@ -114,6 +115,13 @@
 				7F98651C29B1369200F21121 /* ProfileView.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		B0CE70CE29B5FBC50098F6A5 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
