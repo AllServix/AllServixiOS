@@ -24,11 +24,12 @@ struct RegisterView: View {
     @State var phoneFocused = false
     
     @FocusState private var isUsernameFocused: Bool
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     var body: some View {
         VStack(spacing: 0) {
             
-            ButtonBack(showLogin: $showLogin)
+            ButtonBack(mode: mode)
             
             //Logo y texto
             MyHeader(text: "Registro")
@@ -40,7 +41,9 @@ struct RegisterView: View {
             buttonView
         }
         .background(Color.white)
+        .navigationBarBackButtonHidden(true)
     }
+    
     
     // MARK: - Accessory Views
         
@@ -101,13 +104,12 @@ struct RegisterView: View {
                     onSuccess()
                 }else{
                     onError(error: error?.localizedDescription ?? "Request error")
-                    
                 }
             }
         }
     }
     
-    func onSuccess(){
+    func onSuccess() {
         showLogin = true
     }
     

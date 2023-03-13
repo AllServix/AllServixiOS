@@ -125,6 +125,14 @@ struct LoginView: View {
         }
     }
     
+    //func loginFake(email: String, password: String){
+        
+    //    let userLoging: [String: Any] = [
+    //        "email" : email,
+    //        "password" : password
+    //    ]
+    //}
+    
     func onSuccess(){
         showHome = true
     }

@@ -12,12 +12,14 @@ struct ForgottenPassView: View {
     @State var email: String = ""
     @State var emailFocused = false
     @State var showLogin:Bool = false
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     var body: some View {
         VStack {
             
-            ButtonBack(showLogin: $showLogin)
+            ButtonBack(mode: mode)
                 .padding(.top, 60)
+                
             
             MyHeader(text: "Recuperar contraseña")
             
@@ -30,10 +32,13 @@ struct ForgottenPassView: View {
             
             Spacer()
             
+            buttonView
+            
         }
         .padding()
         .background(Color.white)
         .ignoresSafeArea()
+        .navigationBarBackButtonHidden(true)
     }
     var textFieldsView: some View {
         VStack(spacing: 12) {
@@ -52,6 +57,23 @@ struct ForgottenPassView: View {
                 .foregroundColor(Color("OurBlue"))
                 .font(.system(size: 30, weight: .bold))
                 .padding(.bottom, 30)
+            
+        }
+    }
+    
+    var buttonView: some View{
+        Button {
+            // TODO: - Login Action
+        } label: {
+            Text("Enviar")
+                .foregroundColor(.white)
+                .font(.system(size: 27))
+                .frame(height: 60)
+                .frame(maxWidth: .infinity)
+                .background(Color("OurBlue"))
+                .cornerRadius(15)
+                .padding(.bottom, 70)
+                .padding(.horizontal, 100)
             
         }
     }

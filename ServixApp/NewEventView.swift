@@ -7,27 +7,36 @@
 
 import SwiftUI
 
+//CAMBIAR
+class EventResponseModel: Decodable {
+    let address: String?
+    let price: Int?
+    let date: Int?
+}
+
 struct NewEventView: View {
-    @Binding var showTicket: Bool
+    @State var showTicketView: Bool = false
     @State var date: Date = Date()
     @State var name: String = ""
     
-    var completion: () -> () = {}
-    
-    var services = ["Service","Corte de caballero", "Green", "Blue", "Tartan"]
+    var services = ["cejas", "Corte", "Tinte", "Mechas", "Barberia",]
     @State private var selectedService = "Service"
     
+    @State private var ticket: TicketPresentationModel = .init()
+    
     var body: some View {
-        VStack{
-            
-            MyHeader(text: "Nueva cita")
-            
-            fieldsView
-            
-            Spacer()
-            
-            buttonView
-            
+        NavigationView {
+            VStack {
+                
+                MyHeader(text: "Nueva cita")
+                
+                fieldsView
+                
+                Spacer()
+                
+                buttonView
+                
+            }
         }
         
     }
@@ -79,7 +88,8 @@ struct NewEventView: View {
     
     var buttonView: some View{
         Button {
-            // TODO: - Login Action
+            // TODO: - Event register func
+            //eventRegister(name: "", date: 0)
         } label: {
             Text("Continuar")
                 .foregroundColor(.white)
@@ -90,7 +100,7 @@ struct NewEventView: View {
                 .cornerRadius(15)
             
         }.background(
-            NavigationLink(destination: LoginView(), isActive: $showTicket) {
+            NavigationLink(destination: TicketView(ticket: .init(address: ticket.address, date: ticket.date, price: ticket.price), showTicketView: $showTicketView), isActive: $showTicketView) {
                 EmptyView()
             })
         .padding(.bottom, 50)
@@ -101,6 +111,7 @@ struct NewEventView: View {
         let url = "https://superapi.netlify.app/api/db/eventos"
         
         //params
+        // CAMBIAR
         let dictionary: [String: Any] = [
             "name" : name,
             "date" : date
@@ -112,7 +123,7 @@ struct NewEventView: View {
                 onError(error: error.localizedDescription)
             } else if let data = data, let response = response as? HTTPURLResponse {
                 if response.statusCode == 200 { // esto daria ok
-                    onSuccess()
+                    onSuccess(data)
                 } else { // esto daria error
                     onError(error: error?.localizedDescription ?? "Request Error")
                 }
@@ -125,9 +136,14 @@ struct NewEventView: View {
     }
     
     
-    func onSuccess(){
-        completion()
-        showTicket = false
+    func onSuccess(_ data: Data) {
+        do{
+            let ticketsNotFiltered = try JSONDecoder().decode(EventResponseModel?.self, from: data)
+            ticket = .init(address: ticketsNotFiltered?.address ?? "", date: ticketsNotFiltered?.date ?? 0, price: ticketsNotFiltered?.price ?? 0)
+            showTicketView = true
+        } catch {
+            onError(error: error.localizedDescription)
+        }
     }
     
     func convertDateToInt(date: Date) -> Int{
@@ -141,6 +157,6 @@ struct NewEventView: View {
 
 struct NewEventView_Previews: PreviewProvider {
     static var previews: some View {
-        NewEventView(showTicket: .constant(true))
+        NewEventView()
     }
 }
