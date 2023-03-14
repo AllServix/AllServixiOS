@@ -8,7 +8,7 @@
 import SwiftUI
 
 //CAMBIAR
-class EventResponseModel: Decodable {
+struct EventResponseModel2: Decodable {
     let address: String?
     let price: Int?
     let date: Int?
@@ -19,7 +19,12 @@ struct NewEventView: View {
     @State var date: Date = Date()
     @State var name: String = ""
     
-    var services = ["cejas", "Corte", "Tinte", "Mechas", "Barberia",]
+    var services = ["cejas", "Corte", "Tinte", "Mechas", "Barberia"]
+    var servicesAssociated = ["cejas": 5,
+                              "Corte" : 4,
+                              "Tinte" : 2,
+                              "Mechas" : 3,
+                              "Barberia" : 1]
     @State private var selectedService = "Service"
     
     @State private var ticket: TicketPresentationModel = .init()
@@ -38,7 +43,6 @@ struct NewEventView: View {
                 
             }
         }
-        
     }
     
     var fieldsView: some View{
@@ -89,7 +93,7 @@ struct NewEventView: View {
     var buttonView: some View{
         Button {
             // TODO: - Event register func
-            //eventRegister(name: "", date: 0)
+            eventRegister()
         } label: {
             Text("Continuar")
                 .foregroundColor(.white)
@@ -105,16 +109,21 @@ struct NewEventView: View {
             })
         .padding(.bottom, 50)
     }
-    private func eventRegister(name: String, date: Int) {
+    private func eventRegister() {
         
         //baseUrl + endpoint
         let url = "https://superapi.netlify.app/api/db/eventos"
         
         //params
         // CAMBIAR
+        
+        guard let serviceId = servicesAssociated[selectedService] else { return }
+        let dateFormatter = DateFormatter()
+        let dateString = dateFormatter.string(from: date)
+        
         let dictionary: [String: Any] = [
-            "name" : name,
-            "date" : date
+            "service" : serviceId,
+            "date" : dateString
         ]
         
         // petición
@@ -130,15 +139,11 @@ struct NewEventView: View {
             }
         }
     }
-    func createEvent(){
-        let myDate = convertDateToInt(date: date)
-        eventRegister(name: name, date: myDate )
-    }
     
     
     func onSuccess(_ data: Data) {
         do{
-            let ticketsNotFiltered = try JSONDecoder().decode(EventResponseModel?.self, from: data)
+            let ticketsNotFiltered = try JSONDecoder().decode(EventResponseModel2?.self, from: data)
             ticket = .init(address: ticketsNotFiltered?.address ?? "", date: ticketsNotFiltered?.date ?? 0, price: ticketsNotFiltered?.price ?? 0)
             showTicketView = true
         } catch {

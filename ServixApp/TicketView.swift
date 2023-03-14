@@ -19,9 +19,9 @@ struct TicketPresentationModel {
     }
     
     init() {
-        self.address = ""
-        self.date = 0
-        self.price = 0
+        self.address = "C/ igualdad 145"
+        self.date = 120324
+        self.price = 30
     }
 }
 
@@ -116,6 +116,6 @@ struct TicketView: View {
 
 struct TicketView_Previews: PreviewProvider {
     static var previews: some View {
-        TicketView(ticket: .init(address: "C/ Falsa", date: 12412, price: 214124), showTicketView: .constant(true))
+        TicketView(ticket: .init(address: "C/ Igualdad", date: 12412, price: 214124), showTicketView: .constant(true))
     }
 }
