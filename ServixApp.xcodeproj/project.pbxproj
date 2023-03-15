@@ -15,11 +15,15 @@
 		33ABADCC29AFA74800261ECF /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ABADCB29AFA74800261ECF /* TicketView.swift */; };
 		33C848E5299E97D400CB1EB0 /* ForgottenPassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C848E4299E97D400CB1EB0 /* ForgottenPassView.swift */; };
 		33C848E7299EBAD500CB1EB0 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C848E6299EBAD500CB1EB0 /* Components.swift */; };
+		7F5AC67B29BF6CE3004F1FAB /* ImageSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5AC67A29BF6CE3004F1FAB /* ImageSliderView.swift */; };
 		7F98650E29B0F93C00F21121 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98650D29B0F93C00F21121 /* HomeView.swift */; };
 		7F98651729B1134D00F21121 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98651629B1134D00F21121 /* CustomTabView.swift */; };
 		7F98651929B1135800F21121 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98651829B1135800F21121 /* RootView.swift */; };
 		7F98651B29B1368400F21121 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98651A29B1368400F21121 /* ListView.swift */; };
 		7F98651D29B1369200F21121 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98651C29B1369200F21121 /* ProfileView.swift */; };
+		7FC90C5329C0E5310056EE87 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC90C5229C0E5310056EE87 /* SplashScreenView.swift */; };
+		7FCE0F8129B65337000CE7EF /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCE0F8029B65337000CE7EF /* UserModel.swift */; };
+		7FCE0F8629B786EF000CE7EF /* ChangePassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCE0F8529B786EF000CE7EF /* ChangePassView.swift */; };
 		FCDFEDE429AE8EFB00B77E93 /* NewEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDFEDE329AE8EFB00B77E93 /* NewEventView.swift */; };
 		FCDFEDE629AE8F2300B77E93 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDFEDE529AE8F2300B77E93 /* NetworkHelper.swift */; };
 /* End PBXBuildFile section */
@@ -34,11 +38,15 @@
 		33ABADCB29AFA74800261ECF /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
 		33C848E4299E97D400CB1EB0 /* ForgottenPassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgottenPassView.swift; sourceTree = "<group>"; };
 		33C848E6299EBAD500CB1EB0 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		7F5AC67A29BF6CE3004F1FAB /* ImageSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSliderView.swift; sourceTree = "<group>"; };
 		7F98650D29B0F93C00F21121 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		7F98651629B1134D00F21121 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		7F98651829B1135800F21121 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		7F98651A29B1368400F21121 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		7F98651C29B1369200F21121 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		7FC90C5229C0E5310056EE87 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		7FCE0F8029B65337000CE7EF /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		7FCE0F8529B786EF000CE7EF /* ChangePassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassView.swift; sourceTree = "<group>"; };
 		FCDFEDE329AE8EFB00B77E93 /* NewEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventView.swift; sourceTree = "<group>"; };
 		FCDFEDE529AE8F2300B77E93 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,7 +81,7 @@
 		336A23082971A624008C4C9D /* ServixApp */ = {
 			isa = PBXGroup;
 			children = (
-				B0CE70CE29B5FBC50098F6A5 /* New Group */,
+				B0CE70CE29B5FBC50098F6A5 /* Models */,
 				B0CE70CD29B2D4B30098F6A5 /* Views */,
 				7F98651529B1132700F21121 /* CustomBarTest */,
 				336A23092971A624008C4C9D /* ServixApp.swift */,
@@ -108,20 +116,24 @@
 				33C848E4299E97D400CB1EB0 /* ForgottenPassView.swift */,
 				33ABADCB29AFA74800261ECF /* TicketView.swift */,
 				7F98650D29B0F93C00F21121 /* HomeView.swift */,
+				7F5AC67A29BF6CE3004F1FAB /* ImageSliderView.swift */,
+				7FC90C5229C0E5310056EE87 /* SplashScreenView.swift */,
 				336A23172971AEB3008C4C9D /* RegisterView.swift */,
 				336A230B2971A624008C4C9D /* LoginView.swift */,
 				FCDFEDE329AE8EFB00B77E93 /* NewEventView.swift */,
 				7F98651A29B1368400F21121 /* ListView.swift */,
 				7F98651C29B1369200F21121 /* ProfileView.swift */,
+				7FCE0F8529B786EF000CE7EF /* ChangePassView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
 		};
-		B0CE70CE29B5FBC50098F6A5 /* New Group */ = {
+		B0CE70CE29B5FBC50098F6A5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7FCE0F8029B65337000CE7EF /* UserModel.swift */,
 			);
-			name = "New Group";
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,14 +206,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FC90C5329C0E5310056EE87 /* SplashScreenView.swift in Sources */,
 				7F98650E29B0F93C00F21121 /* HomeView.swift in Sources */,
+				7F5AC67B29BF6CE3004F1FAB /* ImageSliderView.swift in Sources */,
 				7F98651D29B1369200F21121 /* ProfileView.swift in Sources */,
 				FCDFEDE629AE8F2300B77E93 /* NetworkHelper.swift in Sources */,
 				33C848E5299E97D400CB1EB0 /* ForgottenPassView.swift in Sources */,
 				33ABADCC29AFA74800261ECF /* TicketView.swift in Sources */,
+				7FCE0F8629B786EF000CE7EF /* ChangePassView.swift in Sources */,
 				336A23182971AEB3008C4C9D /* RegisterView.swift in Sources */,
 				33C848E7299EBAD500CB1EB0 /* Components.swift in Sources */,
 				7F98651729B1134D00F21121 /* CustomTabView.swift in Sources */,
+				7FCE0F8129B65337000CE7EF /* UserModel.swift in Sources */,
 				7F98651929B1135800F21121 /* RootView.swift in Sources */,
 				7F98651B29B1368400F21121 /* ListView.swift in Sources */,
 				336A230C2971A624008C4C9D /* LoginView.swift in Sources */,

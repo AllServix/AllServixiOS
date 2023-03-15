@@ -57,6 +57,7 @@ struct TextFieldModifier: ViewModifier {
             .padding(.leading, 50)
             .background(Color("OurBlue").opacity(0.22))
             .cornerRadius(5)
+            .autocapitalization(.none)
             .overlay(Rectangle()
                 .fill(isFocused ? Color("OurBlue") : Color("OurBlue").opacity(0.7))
                 .opacity(isFocused ? 1 : 0.7)
@@ -82,23 +83,19 @@ struct TextFieldModifier: ViewModifier {
 }
 
 struct ButtonBack: View{
-    
-    @Binding var showLogin: Bool
+    @Binding var mode: PresentationMode
+
     
     var body: some View{
         HStack{
             Button {
-                //To do action
-                showLogin = true
+                mode.dismiss()
             } label: {
                 Image(systemName: "arrow.left.circle")
                     .resizable()
                     .frame(width: 24, height: 24)
                     .foregroundColor(Color("OurBlue"))
-            }.background(
-                NavigationLink(destination: LoginView(), isActive: $showLogin) {
-                    EmptyView()
-                })
+            }
             Spacer()
         }
         .padding(.leading, 20)
@@ -124,3 +121,35 @@ struct MyHeader: View{
         }
     }
 }
+
+struct DatosView: View{
+    var body: some View{
+        ZStack(alignment: .leading, content: {
+            Text("Username:  " )
+                .foregroundColor(Color("OurBlue"))
+                .bold()
+                .padding(.bottom, 30)
+                
+            Rectangle()
+                .frame(height: 5)
+                .padding(.top, 20)
+                .foregroundColor(Color("OurBlue"))
+        })
+        .padding(.all, 30)
+        
+        ZStack(alignment: .leading, content: {
+            Text("Email:  ")
+                .foregroundColor(Color("OurBlue"))
+                .bold()
+                .padding(.bottom, 30)
+                
+            Rectangle()
+                .frame(height: 5)
+                .padding(.top, 20)
+                .foregroundColor(Color("OurBlue"))
+        })
+        .padding(.all, 30)
+    }
+}
+
+

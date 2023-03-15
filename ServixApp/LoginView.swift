@@ -66,7 +66,7 @@ struct LoginView: View {
     
     var buttonView: some View{
         Button {
-            // TODO: - Login Action
+            login(email: email, password: password)
         } label: {
             Text("Log-In")
                 .foregroundColor(.white)
@@ -108,7 +108,7 @@ struct LoginView: View {
             "email" : email,
             "password" : password
         ]
-        NetworkHelper.shared.requestProvider(url: "https://superapi.netlify.app/api/login", params: dictionary) { data, response, error in
+        NetworkHelper.shared.requestProvider(url: "http://127.0.0.1:8000/api/users/login", params: dictionary) { data, response, error in
             if let error = error {
                 print(error.localizedDescription)
                 
@@ -124,6 +124,14 @@ struct LoginView: View {
             }
         }
     }
+    
+    //func loginFake(email: String, password: String){
+        
+    //    let userLoging: [String: Any] = [
+    //        "email" : email,
+    //        "password" : password
+    //    ]
+    //}
     
     func onSuccess(){
         showHome = true

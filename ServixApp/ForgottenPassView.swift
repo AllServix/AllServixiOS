@@ -12,12 +12,14 @@ struct ForgottenPassView: View {
     @State var email: String = ""
     @State var emailFocused = false
     @State var showLogin:Bool = false
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     var body: some View {
         VStack {
             
-            ButtonBack(showLogin: $showLogin)
+            ButtonBack(mode: mode)
                 .padding(.top, 60)
+                
             
             MyHeader(text: "Recuperar contraseña")
             
@@ -30,10 +32,13 @@ struct ForgottenPassView: View {
             
             Spacer()
             
+            buttonView
+            
         }
         .padding()
         .background(Color.white)
         .ignoresSafeArea()
+        .navigationBarBackButtonHidden(true)
     }
     var textFieldsView: some View {
         VStack(spacing: 12) {
@@ -54,6 +59,53 @@ struct ForgottenPassView: View {
                 .padding(.bottom, 30)
             
         }
+    }
+    
+    var buttonView: some View{
+        Button {
+            recoverPass(email: email)
+        } label: {
+            Text("Enviar")
+                .foregroundColor(.white)
+                .font(.system(size: 27))
+                .frame(height: 60)
+                .frame(maxWidth: .infinity)
+                .background(Color("OurBlue"))
+                .cornerRadius(15)
+                .padding(.bottom, 70)
+                .padding(.horizontal, 100)
+            
+        }
+    }
+    
+    func recoverPass(email: String){
+        
+        let dictionary: [String: Any] = [
+            "email" : email
+        ]
+        NetworkHelper.shared.requestProvider(url: "http://127.0.0.1:8000/api/users/recoverPassword", params: dictionary) { data, response, error in
+            if let error = error {
+                print(error.localizedDescription)
+                
+            }else if let data = data, let response = response as? HTTPURLResponse{
+                print(response.statusCode)
+                print(String(bytes:data, encoding: .utf8))
+                if response.statusCode == 200{
+                    onSuccess()
+                }else{
+                    onError(error: error?.localizedDescription ?? "Request error")
+                    
+                }
+            }
+        }
+    }
+    
+    func onSuccess(){
+        showLogin = true
+    }
+    
+    func onError(error: String){
+        print("Error")
     }
 }
 

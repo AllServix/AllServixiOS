@@ -11,7 +11,7 @@ struct RegisterView: View {
     
     @State var username: String = ""
     @State var password: String = ""
-    @State var repeatP: String = ""
+    @State var password_confirmation: String = ""
     @State var email: String = ""
     @State var phone: String = ""
     
@@ -24,11 +24,12 @@ struct RegisterView: View {
     @State var phoneFocused = false
     
     @FocusState private var isUsernameFocused: Bool
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     var body: some View {
         VStack(spacing: 0) {
             
-            ButtonBack(showLogin: $showLogin)
+            ButtonBack(mode: mode)
             
             //Logo y texto
             MyHeader(text: "Registro")
@@ -40,7 +41,9 @@ struct RegisterView: View {
             buttonView
         }
         .background(Color.white)
+        .navigationBarBackButtonHidden(true)
     }
+    
     
     // MARK: - Accessory Views
         
@@ -54,7 +57,7 @@ struct RegisterView: View {
             
             TextFieldCustomView(placeholder: "Password", image: "lock.fill", imageSize: CGSize(width: 17, height: 23), text: $password, isFocused: $passwordFocused)
             
-            TextFieldCustomView(placeholder: "Repeat Password", image: "lock.fill", imageSize: CGSize(width: 17, height: 23), text: $repeatP, isFocused: $repeatFocused)
+            TextFieldCustomView(placeholder: "Repeat Password", image: "lock.fill", imageSize: CGSize(width: 17, height: 23), text: $password_confirmation, isFocused: $repeatFocused)
             
             TextFieldCustomView(placeholder: "Phone number", image: "iphone", imageSize: CGSize(width: 17, height: 25), text: $phone, isFocused: $phoneFocused)
             
@@ -65,7 +68,7 @@ struct RegisterView: View {
     
     var buttonView: some View{
         Button {
-            // TODO: - Login Action
+            register(username: username, email: email, password: password, password_confirmation: password_confirmation, phoneNumber: phone)
         } label: {
             Text("Register")
                 .foregroundColor(.white)
@@ -81,16 +84,16 @@ struct RegisterView: View {
             })
         .padding(.top, 50)
     }
-    func login(username: String, email: String, password: String, repeatPass: String, phoneNumber: String){
+    func register(username: String, email: String, password: String, password_confirmation: String, phoneNumber: String){
         
         let dictionary: [String: Any] = [
             "username": username,
             "email" : email,
             "password" : password,
-            "repeatPass": repeatPass,
+            "password_confirmation": password_confirmation,
             "phoneNumber": phoneNumber
         ]
-        NetworkHelper.shared.requestProvider(url: "https://superapi.netlify.app/api/login", params: dictionary) { data, response, error in
+        NetworkHelper.shared.requestProvider(url: "http://127.0.0.1:8000/api/users/register", params: dictionary) { data, response, error in
             if let error = error {
                 print(error.localizedDescription)
                 
@@ -101,13 +104,12 @@ struct RegisterView: View {
                     onSuccess()
                 }else{
                     onError(error: error?.localizedDescription ?? "Request error")
-                    
                 }
             }
         }
     }
     
-    func onSuccess(){
+    func onSuccess() {
         showLogin = true
     }
     

@@ -15,6 +15,8 @@ class NetworkHelper {
     enum RequestType: String {
         case POST
         case GET
+        case PUT
+        case DELETE
     }
     
     

@@ -7,29 +7,42 @@
 
 import SwiftUI
 
+//CAMBIAR
+struct EventResponseModel2: Decodable {
+    let address: String?
+    let price: Int?
+    let date: Int?
+}
+
 struct NewEventView: View {
-    @Binding var showTicket: Bool
+    @State var showTicketView: Bool = false
     @State var date: Date = Date()
     @State var name: String = ""
     
-    var completion: () -> () = {}
-    
-    var services = ["Service","Corte de caballero", "Green", "Blue", "Tartan"]
+    var services = ["cejas", "Corte", "Tinte", "Mechas", "Barberia"]
+    var servicesAssociated = ["cejas": 5,
+                              "Corte" : 4,
+                              "Tinte" : 2,
+                              "Mechas" : 3,
+                              "Barberia" : 1]
     @State private var selectedService = "Service"
     
+    @State private var ticket: TicketPresentationModel = .init()
+    
     var body: some View {
-        VStack{
-            
-            MyHeader(text: "Nueva cita")
-            
-            fieldsView
-            
-            Spacer()
-            
-            buttonView
-            
+        NavigationView {
+            VStack {
+                
+                MyHeader(text: "Nueva cita")
+                
+                fieldsView
+                
+                Spacer()
+                
+                buttonView
+                
+            }
         }
-        
     }
     
     var fieldsView: some View{
@@ -79,7 +92,8 @@ struct NewEventView: View {
     
     var buttonView: some View{
         Button {
-            // TODO: - Login Action
+            // TODO: - Event register func
+            showTicketView = true
         } label: {
             Text("Continuar")
                 .foregroundColor(.white)
@@ -90,20 +104,26 @@ struct NewEventView: View {
                 .cornerRadius(15)
             
         }.background(
-            NavigationLink(destination: LoginView(), isActive: $showTicket) {
+            NavigationLink(destination: TicketView(ticket: .init(address: ticket.address, date: ticket.date, price: ticket.price), showTicketView: $showTicketView), isActive: $showTicketView) {
                 EmptyView()
             })
         .padding(.bottom, 50)
     }
-    private func eventRegister(name: String, date: Int) {
+    private func eventRegister() {
         
         //baseUrl + endpoint
         let url = "https://superapi.netlify.app/api/db/eventos"
         
         //params
+        // CAMBIAR
+        
+        guard let serviceId = servicesAssociated[selectedService] else { return }
+        let dateFormatter = DateFormatter()
+        let dateString = dateFormatter.string(from: date)
+        
         let dictionary: [String: Any] = [
-            "name" : name,
-            "date" : date
+            "service" : serviceId,
+            "date" : dateString
         ]
         
         // petición
@@ -112,22 +132,23 @@ struct NewEventView: View {
                 onError(error: error.localizedDescription)
             } else if let data = data, let response = response as? HTTPURLResponse {
                 if response.statusCode == 200 { // esto daria ok
-                    onSuccess()
+                    onSuccess(data)
                 } else { // esto daria error
                     onError(error: error?.localizedDescription ?? "Request Error")
                 }
             }
         }
     }
-    func createEvent(){
-        let myDate = convertDateToInt(date: date)
-        eventRegister(name: name, date: myDate )
-    }
     
     
-    func onSuccess(){
-        completion()
-        showTicket = false
+    func onSuccess(_ data: Data) {
+        do{
+            let ticketsNotFiltered = try JSONDecoder().decode(EventResponseModel2?.self, from: data)
+            ticket = .init(address: ticketsNotFiltered?.address ?? "", date: ticketsNotFiltered?.date ?? 0, price: ticketsNotFiltered?.price ?? 0)
+            showTicketView = true
+        } catch {
+            onError(error: error.localizedDescription)
+        }
     }
     
     func convertDateToInt(date: Date) -> Int{
@@ -141,6 +162,6 @@ struct NewEventView: View {
 
 struct NewEventView_Previews: PreviewProvider {
     static var previews: some View {
-        NewEventView(showTicket: .constant(true))
+        NewEventView()
     }
 }

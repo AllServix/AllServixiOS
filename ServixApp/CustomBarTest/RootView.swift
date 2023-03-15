@@ -17,7 +17,7 @@ struct RootView: View {
             HomeView()
                 .tag(Tabs.home)
             
-            NewEventView(showTicket: .constant(true))
+            NewEventView()
                 .tag(Tabs.add)
             
             ListView()
