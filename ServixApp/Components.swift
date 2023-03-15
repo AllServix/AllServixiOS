@@ -57,6 +57,7 @@ struct TextFieldModifier: ViewModifier {
             .padding(.leading, 50)
             .background(Color("OurBlue").opacity(0.22))
             .cornerRadius(5)
+            .autocapitalization(.none)
             .overlay(Rectangle()
                 .fill(isFocused ? Color("OurBlue") : Color("OurBlue").opacity(0.7))
                 .opacity(isFocused ? 1 : 0.7)

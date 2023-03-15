@@ -63,7 +63,7 @@ struct ForgottenPassView: View {
     
     var buttonView: some View{
         Button {
-            // TODO: - Login Action
+            recoverPass(email: email)
         } label: {
             Text("Enviar")
                 .foregroundColor(.white)
@@ -76,6 +76,36 @@ struct ForgottenPassView: View {
                 .padding(.horizontal, 100)
             
         }
+    }
+    
+    func recoverPass(email: String){
+        
+        let dictionary: [String: Any] = [
+            "email" : email
+        ]
+        NetworkHelper.shared.requestProvider(url: "http://127.0.0.1:8000/api/users/recoverPassword", params: dictionary) { data, response, error in
+            if let error = error {
+                print(error.localizedDescription)
+                
+            }else if let data = data, let response = response as? HTTPURLResponse{
+                print(response.statusCode)
+                print(String(bytes:data, encoding: .utf8))
+                if response.statusCode == 200{
+                    onSuccess()
+                }else{
+                    onError(error: error?.localizedDescription ?? "Request error")
+                    
+                }
+            }
+        }
+    }
+    
+    func onSuccess(){
+        showLogin = true
+    }
+    
+    func onError(error: String){
+        print("Error")
     }
 }
 

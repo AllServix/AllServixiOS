@@ -56,16 +56,16 @@ struct ListView: View {
         ZStack{
             VStack{
                 VStack(spacing: 10){
-                    Image("Agenda")
+                    Image("Logo")
                         .resizable()
                         .frame(width: 130, height: 130)
                     Text("History")
-                        .foregroundColor(Color("Color"))
+                        .foregroundColor(Color("OurBlue"))
                         .font(.system(size: 30, weight: .bold))
                 }
 
                 ZStack{
-                    Color("Color")
+                    Color("OurBlue")
                         .cornerRadius(5)
                         .frame(width: 380, height: 430)
                     
@@ -79,7 +79,7 @@ struct ListView: View {
                                         Button {
                                             //code
                                         } label: {
-                                            Image("trash")
+                                            Image("Trash")
                                                 .frame(width:35, height: 35)
                                                 .background(Color.white)
                                                 .cornerRadius(10)

@@ -20,8 +20,8 @@ struct TicketPresentationModel {
     
     init() {
         self.address = "C/ igualdad 145"
-        self.date = 120324
-        self.price = 30
+        self.date = 0
+        self.price = 0
     }
 }
 
@@ -29,6 +29,7 @@ struct TicketView: View {
     
     var ticket: TicketPresentationModel
     @Binding var showTicketView: Bool
+    @State var showHomeView: Bool = false
     
     var body: some View {
         
@@ -63,19 +64,23 @@ struct TicketView: View {
                 .padding(.vertical, 50)
             
             VStack{
-                Text(ticket.address)
+                //ticket.addres
+                Text("Calle Igualdad 135")
                     .frame(width: 350, height: 80)
                     .background(Color.white)
                     .cornerRadius(5)
                 
-                Text("\(ticket.date)")
+                
+                //\(ticket.date)
+                Text("12-03-2023")
                     .padding(.horizontal, 5)
                     .frame(width: 350, height: 80)
                     .background(Color.white)
                     .cornerRadius(5)
                     .padding(.horizontal, 10)
                 
-                Text("\(ticket.price)")
+                //\(ticket.price)
+                Text("30 $")
                     .frame(width:350, height: 80)
                     .background(Color.white)
                     .cornerRadius(5)
@@ -90,7 +95,7 @@ struct TicketView: View {
         
         Button {
             // TODO: - Login Action
-            showTicketView = false
+            showHomeView = true
         } label: {
             Text("Exit")
                 .foregroundColor(.white)
@@ -100,14 +105,10 @@ struct TicketView: View {
                 .background(Color("OurBlue"))
                 .cornerRadius(15)
             
-        }.background( EmptyView()
-                      
-                      //            NavigationLink(destination: TicketView(), isActive: $showLogin) {
-                      //
-                      //                EmptyView()
-                      //
-                      //            }
-        )
+        }.background(
+            NavigationLink(destination: HomeView(), isActive: $showHomeView) {
+                EmptyView()
+            })
         
         .padding(.top, 50)
         
@@ -116,6 +117,6 @@ struct TicketView: View {
 
 struct TicketView_Previews: PreviewProvider {
     static var previews: some View {
-        TicketView(ticket: .init(address: "C/ Igualdad", date: 12412, price: 214124), showTicketView: .constant(true))
+        TicketView(ticket: .init(address: "C/ Igualdad", date: 0, price: 0), showTicketView: .constant(true))
     }
 }

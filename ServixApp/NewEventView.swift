@@ -93,7 +93,7 @@ struct NewEventView: View {
     var buttonView: some View{
         Button {
             // TODO: - Event register func
-            eventRegister()
+            showTicketView = true
         } label: {
             Text("Continuar")
                 .foregroundColor(.white)
