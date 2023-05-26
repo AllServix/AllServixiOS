@@ -125,7 +125,7 @@ struct MyHeader: View{
 struct DatosView: View{
     var body: some View{
         ZStack(alignment: .leading, content: {
-            Text("Username:  " )
+            Text("Username:  Jose Romo" )
                 .foregroundColor(Color("OurBlue"))
                 .bold()
                 .padding(.bottom, 30)
@@ -138,7 +138,7 @@ struct DatosView: View{
         .padding(.all, 30)
         
         ZStack(alignment: .leading, content: {
-            Text("Email:  ")
+            Text("Email: joseromoluque@ gmail.com" )
                 .foregroundColor(Color("OurBlue"))
                 .bold()
                 .padding(.bottom, 30)
@@ -149,7 +149,87 @@ struct DatosView: View{
                 .foregroundColor(Color("OurBlue"))
         })
         .padding(.all, 30)
+        
+        
     }
 }
+
+struct EventsListView: View {
+    
+    @State private var projects: [Project] = [
+        Project(
+            id: UUID(),
+            service: "Corte caballero",
+            date: "12-06-2023",
+            image: Image("Logo")
+            
+        ),
+            
+        Project(
+            id: UUID(),
+            service: "Tinte y peinado",
+            date: "01-06-2023",
+            image: Image("Logo")
+        ),
+        
+        Project(
+            id: UUID(),
+            service: "Corte y barba",
+            date: "03-06-2023",
+            image: Image("Logo")
+        ),
+        
+        Project(
+            id: UUID(),
+            service: "Barbería",
+            date: "10-06-2023",
+            image: Image("Logo")
+        ),
+        
+        Project(
+            id: UUID(),
+            service: "Tinte y peinado",
+            date: "21-06-2023",
+            image: Image("Logo")
+        )
+    ]
+
+
+    
+    @State private var selectedProjectIndex: Int? = nil
+
+        var body: some View {
+            NavigationView {
+                List(0..<projects.count) { index in
+                    let project = projects[index]
+                    HStack(alignment: .center, spacing: 16) {
+                        project.image
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                        
+                        Text(project.service)
+                            .foregroundColor(Color("OurBlue"))
+                            .font(.system(size: 25))
+                            .padding(8)
+                            .background(Color.white)
+                            .cornerRadius(10)
+                    }
+                    .onTapGesture {
+                        selectedProjectIndex = index
+                    }
+                    //.background(
+                        //NavigationLink(
+                           // destination: ProjectDetailView(project: project),
+                            //tag: index,
+                            //selection: $selectedProjectIndex,
+                            //label: { EmptyView() }
+                        //)
+                        //.hidden()
+                    //)
+                }
+            }
+        }
+}
+
 
 

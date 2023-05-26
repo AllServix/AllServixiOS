@@ -107,12 +107,12 @@ struct NewEventView: View {
             NavigationLink(destination: TicketView(ticket: .init(address: ticket.address, date: ticket.date, price: ticket.price), showTicketView: $showTicketView), isActive: $showTicketView) {
                 EmptyView()
             })
-        .padding(.bottom, 50)
-    }
+        .navigationBarBackButtonHidden(true)
+        .padding(.bottom, 50)    }
     private func eventRegister() {
         
         //baseUrl + endpoint
-        let url = "https://superapi.netlify.app/api/db/eventos"
+        let url = "http://127.0.0.1:8000/api/appointments/registerAppointments"
         
         //params
         // CAMBIAR

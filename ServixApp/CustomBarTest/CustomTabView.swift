@@ -20,6 +20,7 @@ struct CustomTabView: View {
     @Binding var selectedTab: Tabs
     
     var body: some View {
+        
         HStack (alignment: .center){
             
             Button {
@@ -30,7 +31,7 @@ struct CustomTabView: View {
                     if selectedTab == .home {
                         Rectangle()
                             .foregroundColor(.white)
-                            .frame(width: geo.size.width/4, height: 4)
+                            .frame(width: geo.size.width/4, height: 2)
                             .padding(.leading, geo.size.width/2.7)
                             .padding(.vertical, 10)
                                             
@@ -56,7 +57,7 @@ struct CustomTabView: View {
                     if selectedTab == .add {
                     Rectangle()
                         .foregroundColor(.white)
-                        .frame(width: geo.size.width/4, height: 4)
+                        .frame(width: geo.size.width/4, height: 2)
                         .padding(.leading, geo.size.width/2.7)
                         .padding(.vertical, 10)
 
@@ -71,6 +72,7 @@ struct CustomTabView: View {
                     .frame(width: geo.size.width, height: geo.size.height)
                 }
             }
+            .navigationBarBackButtonHidden(true)
             .tint(Color.white)
             Button {
                 //Switch to list
@@ -80,7 +82,7 @@ struct CustomTabView: View {
                     if selectedTab == .list {
                         Rectangle()
                             .foregroundColor(.white)
-                            .frame(width: geo.size.width/4, height: 4)
+                            .frame(width: geo.size.width/4, height: 2)
                             .padding(.leading, geo.size.width/2.7)
                             .padding(.vertical, 10)
                     }
@@ -103,7 +105,7 @@ struct CustomTabView: View {
                 if selectedTab == .profile {
                     Rectangle()
                         .foregroundColor(.white)
-                        .frame(width: geo.size.width/4, height: 4)
+                        .frame(width: geo.size.width/4, height: 2)
                         .padding(.leading, geo.size.width/2.7)
                         .padding(.vertical, 10)
                 }

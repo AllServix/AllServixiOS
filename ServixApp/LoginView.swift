@@ -79,9 +79,10 @@ struct LoginView: View {
                 .padding(.horizontal, 100)
             
         }.background(
-            NavigationLink(destination: HomeView(), isActive: $showHome) {
+            NavigationLink(destination: RootView(), isActive: $showHome) {
                 EmptyView()
             })
+        .navigationBarBackButtonHidden(true)
     }
     
     var withoutAcc: some View{

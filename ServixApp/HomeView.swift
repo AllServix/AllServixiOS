@@ -14,6 +14,11 @@ struct HomeView: View {
         
         // 2
         List {
+            
+            Text("Home")
+                .foregroundColor(Color("OurBlue"))
+                .frame(maxWidth: .infinity, alignment: .center)
+                .font(.system(size: 30, weight: .bold))
             ImageSlider()
                 .frame(height: 300)
                 .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
@@ -31,9 +36,11 @@ struct HomeView: View {
                 }
                 Spacer()
                 
+                
                 Image("location")
                     .resizable()
                     .frame(width: 50, height: 50)
+                    
             }
             
             Text("Sobre nosotros")

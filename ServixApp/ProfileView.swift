@@ -17,25 +17,41 @@ struct ProfileView: View {
     @State var showChange: Bool = false
     
     var body: some View {
-        VStack{
+        
+        ZStack{
             
-            MyHeader(text: "Perfil")
+            ZStack{
+                Color("OurBlue")
+                    .cornerRadius(10)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 200)
+                    .opacity(0.6)
+                
+                Text("In Development")
+                    .foregroundColor(Color.white)
+            }
             
-            DatosView()
             
-            Spacer()
-            
-            buttonView
-            
+            VStack{
+                
+                MyHeader(text: "Perfil")
+                
+                DatosView()
+                
+                Spacer()
+                
+                buttonView
+                
+            }
         }
+        
     }
     
     var buttonView: some View{
         Button {
-            
+            showChange = true
         } label: {
             Text("Cambiar contraseña")
-                .foregroundColor(.white)
                 .font(.system(size: 17))
                 .frame(height: 60)
                 .frame(maxWidth: .infinity)

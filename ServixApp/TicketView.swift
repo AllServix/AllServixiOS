@@ -31,6 +31,8 @@ struct TicketView: View {
     @Binding var showTicketView: Bool
     @State var showHomeView: Bool = false
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     var body: some View {
         
         VStack(spacing: 0) {
@@ -42,10 +44,10 @@ struct TicketView: View {
             textFieldsView
             
             //Botón
-            buttonView
+            buttonView(mode: presentationMode)
             
         }
-        
+        .navigationBarBackButtonHidden(true)
         .background(Color.white)
         
     }
@@ -91,11 +93,11 @@ struct TicketView: View {
     
     
     
-    var buttonView: some View{
+    func buttonView(mode:Binding<PresentationMode>) -> some View{
         
         Button {
             // TODO: - Login Action
-            showHomeView = true
+            mode.wrappedValue.dismiss()
         } label: {
             Text("Exit")
                 .foregroundColor(.white)
@@ -105,10 +107,7 @@ struct TicketView: View {
                 .background(Color("OurBlue"))
                 .cornerRadius(15)
             
-        }.background(
-            NavigationLink(destination: HomeView(), isActive: $showHomeView) {
-                EmptyView()
-            })
+        }
         
         .padding(.top, 50)
         
